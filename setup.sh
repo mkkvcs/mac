@@ -34,3 +34,5 @@ defaults write -g ApplePressAndHoldEnabled -bool false;
 defaults write com.apple.TextEdit RichText -int 0
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+Keyboard shortcuts
