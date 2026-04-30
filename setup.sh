@@ -5,6 +5,7 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 chflags nohidden ~/Library
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
+defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.coteditor.CotEditor;}'
 
 
 defaults write com.apple.dock autohide -float 1
