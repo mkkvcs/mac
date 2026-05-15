@@ -1,5 +1,6 @@
-sudo scutil --set ComputerName 4324532
-sudo scutil --set LocalHostName 4324532
+sudo scutil --set HostName Mac
+sudo scutil --set LocalHostName Mac
+sudo scutil --set ComputerName Mac
 
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 chflags nohidden ~/Library
@@ -21,6 +22,9 @@ defaults write com.apple.finder AppleShowAllFiles -bool true
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write com.apple.finder FXPreferredViewStyle -string "icnv"
 killall Finder
+
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
 
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
