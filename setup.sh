@@ -20,7 +20,7 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder AppleShowAllFiles -bool true
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-defaults write com.apple.finder FXPreferredViewStyle -string "icnv"
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 killall Finder
 
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
