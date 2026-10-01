@@ -6,8 +6,22 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 chflags nohidden ~/Library
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.coteditor.CotEditor;}'
+defaults write com.apple.CrashReporter DialogType none
+sudo launchctl disable system/com.apple.screensharing
+sudo launchctl disable system/com.apple.smbd
+sudo cupsctl --no-share-printers
+sudo systemsetup -setremotelogin off
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
+sudo AssetCacheManagerUtil deactivate
+sudo launchctl disable system/com.apple.ODSAgent
+sudo defaults write com.apple.amp.mediasharingd home-sharing-enabled -int 0
+sudo launchctl disable system/com.apple.tftpd
+sudo launchctl disable system/com.apple.nfsd
+sudo launchctl disable system/org.apache.httpd
+sudo launchctl disable system/com.apple.uucp
+sudo launchctl disable system/com.openssh.sshd
 
+launchctl print-disabled system
 
 defaults write com.apple.dock autohide -float 1
 defaults write com.apple.dock autohide-time-modifier -float 0.50
@@ -20,7 +34,7 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder AppleShowAllFiles -bool true
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-defaults write com.apple.finder FXPreferredViewStyle -string "icnv"
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 killall Finder
 
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -40,4 +54,3 @@ defaults write com.apple.TextEdit RichText -int 0
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 
-Keyboard shortcuts
