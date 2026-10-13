@@ -6,6 +6,7 @@ chflags nohidden ~/Library
 
 defaults write com.apple.assistant.support "Search Queries Data Sharing Status" -int 2
 defaults write com.apple.assistant.support "Siri Data Sharing Opt-In Status" -int 2
+defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 defaults write com.apple.AdLib allowApplePersonalizedAdvertising -bool false
 defaults write com.apple.amp.mediasharingd home-sharing-enabled -int 0
 defaults write com.apple.CrashReporter DialogType none
