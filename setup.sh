@@ -1,8 +1,9 @@
-sudo scutil --set HostName Mac
-sudo scutil --set LocalHostName Mac
-sudo scutil --set ComputerName Mac
+#!/usr/bin/env bash
+set -euo pipefail
 
 chflags nohidden ~/Library
+
+echo "All preferences"
 
 defaults write com.apple.assistant.support "Search Queries Data Sharing Status" -int 2
 defaults write com.apple.assistant.support "Siri Data Sharing Opt-In Status" -int 2
@@ -37,11 +38,21 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add '{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.coteditor.coteditor;}'
+defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add '{LSHandlerContentType=public.source-code;LSHandlerRoleAll=com.coteditor.coteditor;}'
+defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add '{LSHandlerContentType=public.text;LSHandlerRoleAll=com.coteditor.coteditor;}'
+defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add '{LSHandlerContentType=com.apple.traditional-mac-plain-text;LSHandlerRoleAll=com.coteditor.coteditor;}'
+
+echo "Restarting Dock and Finder"
 
 killall Finder
 killall Dock
 
-sudo cupsctl --no-share-printers
+cupsctl --no-share-printers
+cupsctl --no-remote-any
+sudo scutil --set HostName Mac
+sudo scutil --set LocalHostName Mac
+sudo scutil --set ComputerName Mac
 sudo systemsetup -setremotelogin off
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
 sudo AssetCacheManagerUtil deactivate
